@@ -1,32 +1,14 @@
 import React, { Component } from 'react';
-import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text } from 'native-base';
+import { Container, Thumbnail, Content } from 'native-base';
 export default class HeaderComponent extends Component {
   render() {
+    const uri = 'https://businessdial.pk/wp-content/uploads/2019/03/Add-Business-Get-Business-2.jpg'
     return (
-      <Container>
-        <Header>
-          <Left>
-            <Button transparent>
-              <Icon name='menu' />
-            </Button>
-          </Left>
-          <Body>
-            <Title>Header</Title>
-          </Body>
-          <Right />
-        </Header>
-        <Content>
-          <Text>
-            This is Content Section
-          </Text>
+      <Container >
+        <Content  >
+          <Thumbnail large square source={{ uri: uri }} />
+
         </Content>
-        <Footer>
-          <FooterTab>
-            <Button full>
-              <Text>Footer</Text>
-            </Button>
-          </FooterTab>
-        </Footer>
       </Container>
     );
   }
