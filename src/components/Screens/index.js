@@ -98,6 +98,8 @@ import Vacations from './vacations'
 import { Text, Left } from "native-base";
 import Icon from 'react-native-vector-icons/FontAwesome5'
 
+
+
 // Home Tabs
 
 const homeTabNavigation = createMaterialTopTabNavigator({
@@ -122,6 +124,8 @@ const homeTabNavigation = createMaterialTopTabNavigator({
 
 }, {
     tabBarOptions: {
+      header:null,
+      headerBackTitleVisible:false,
       showIcon: true,
       activeTintColor: '#f0edf6',
       labelStyle: {
@@ -1126,7 +1130,10 @@ const authStackNavigation = createStackNavigator({
   Welcome: WelComeScreen,
   LogInScreen: LogInScreen,
   SignUpScreen: SignUpScreen,
-  App: { screen: appTabNavigator },
+  App: { screen: appTabNavigator,
+  navigationOptions :{
+    header:null
+  } },
   Construction: Construction,
   MedicalHealth: MedicalHealth,
   EducationInstitutes: EducationInstitutes,
@@ -1173,6 +1180,7 @@ const authStackNavigation = createStackNavigator({
   parties: partiesTabNavigation,
   resorts: resortsTabNavigation,
 
+},{
 })
 
 // main switch navigators

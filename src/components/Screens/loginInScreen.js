@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
-import { Container, Content, Thumbnail, Form, Item, Label, Input, Icon, Button, Text,ListItem } from 'native-base';
+import { Container, Content, Thumbnail, Form, Item, Label, Input, Icon, Button, Text, ListItem } from 'native-base';
 
-export default class LogInScreen extends Component { 
+export default class LogInScreen extends Component {
+    static navigationOptions = {
+        header: null
+    }
     render() {
-    console.log(this.props)
+        console.log(this.props)
         const path = 'https://businessdial.pk/wp-content/uploads/2019/03/Add-Business-Get-Business-2.jpg'
         return (
             <Container>
                 <Content>
-                    <Thumbnail style={{marginTop:'20%', width: 120, flex: 1, justifyContent: 'center', alignSelf: 'center' }} large square source={{ uri: path }} />
-                    <Form>
+                    <Thumbnail style={{  position: 'absolute', marginTop: '20%', width: 150, height: 100, flex: 1, justifyContent: 'center', alignSelf: 'center' }} large square source={{ uri: path }} />
+                    <Form style={{marginTop: '45%' }}>
                         <Item floatingLabel>
                             <Icon active name='person' />
                             <Label>Username</Label>
@@ -20,21 +23,25 @@ export default class LogInScreen extends Component {
                             <Label>Password</Label>
                             <Input />
                         </Item>
-                    </Form>
-                        <ListItem>
-                        <Button onPress = {() => this.props.navigation.navigate("MainPage")} block style = {{width:'38%' ,flex:1,alignSelf:'center' ,marginTop:30 }} dark  iconLeft>
-                            <Icon name='unlock' />
-                            <Text>Login</Text>
+                        <Button  block style={{ alignSelf:'center', width:'95%' ,margin:'auto',backgroundColor:'black',marginTop: 30 }}  iconLeft
+                        onPress = {()=> this.props.navigation.navigate("App")}
+                        >
+                        <Icon name='unlock' />
+                            <Text>login</Text>
                         </Button>
-                        </ListItem>
-                        <Button style = {{width:'42%',float:'left',marginTop:30,marginLeft: 10}}   iconLeft>
+                        <Button block style={{ alignSelf:'center', width:'95%',  marginTop: 15 }} iconLeft
+                         onPress = {()=> this.props.navigation.navigate("App")}
+                        >
                             <Icon name="logo-facebook" theme="filled" />
                             <Text>Facebook</Text>
                         </Button>
-                        <Button style = {{width:'38%',flex:1 ,alignSelf:'flex-end',marginTop:-44,marginRight: 10}} danger  iconLeft>
-                            <Icon name="logo-google" theme="filled"  />
-                            <Text>Google</Text>
+                    </Form>
+                    {/* <ListItem>
+                        <Button onPress={() => this.props.navigation.navigate("MainPage")} block style={{ width: '38%', flex: 1, alignSelf: 'center', marginTop: 30 }} dark iconLeft>
+                            <Icon name='unlock' />
+                            <Text>SIGNUP</Text>
                         </Button>
+                    </ListItem> */}
 
                 </Content>
             </Container>

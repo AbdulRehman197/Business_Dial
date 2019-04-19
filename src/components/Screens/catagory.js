@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Container, Header, Content, Card, CardItem, Text, Left, Icon, Right, Thumbnail } from 'native-base';
 export default class CatagoryComponent extends Component {
+  static navigationOptions = {
+    header: null
+}
   render() {
     const path = 'https://images.pexels.com/photos/56866/garden-rose-red-pink-56866.jpeg?cs=srgb&dl=bloom-blossom-dew-56866.jpg&fm=jpg'
     return (

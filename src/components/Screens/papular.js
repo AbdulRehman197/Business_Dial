@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Image } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right } from 'native-base';
 export default class PapularLocations extends Component {
+    static navigationOptions = {
+        header: null
+    }
     render() {
         const faisalabad = 'https://nation.com.pk/print_images/large/2017-11-03/faisalabad-architectural-heritage-in-a-shambles-1509729509-6563.jpg'
         const lahore = 'https://photo-cdn.urdupoint.com/media/2018/12/_3/730x425/pic_1545463630.jpg'
