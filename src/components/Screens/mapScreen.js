@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, View, Button } from 'react-native';
-import { Container, Thumbnail, Content } from 'native-base';
-import { Dimensions, Text, TouchableHighlight } from 'react-native';
+import { Platform, Dimensions, Text, StyleSheet, View, Button, TouchableOpacity } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
+import Modal from "react-native-modal";
+
+// import component
+import MapInfo from './mapGetInfo'
 export default class MapScreen extends Component {
     static navigationOptions = {
         header: null
     }
     state = {
+        isModalVisible: false,
         focusedLocation: {
             latitude: 31.418715,
             longitude: 73.079109,
@@ -80,10 +83,34 @@ export default class MapScreen extends Component {
                 alert('Getting Location failed. Please select manually.');
             })
     }
+    _toggleModal = () =>
+        this.setState({ isModalVisible: !this.state.isModalVisible });
     render() {
-        const uri = 'https://businessdial.pk/wp-content/uploads/2019/03/Add-Business-Get-Business-2.jpg'
+        const uri = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfJbaSkm3z4of2nLFzdZbNR0kLSQFujXMl6knQ_cd1wsVGsl2j'
+
         return (
             <View>
+                <View style={{ flex: 1 }}>
+                    <Modal isVisible={this.state.isModalVisible}
+                        backdropColor='black'
+                        backdropOpacity={0.7}
+                        style={{  justifyContent: 'center', alignItems: 'center' }}
+                    >
+                        <View style={{
+                            backgroundColor: 'white',
+                            width: 300,
+                            height: 300,
+                            // top:25,
+                            // alignSelf: 'center',
+                            borderRadius: 15,
+                            // alignItems: 'center',
+                            // justifyContent:'center'
+                        }}>
+                        <MapInfo closeModal = {this._toggleModal} />
+                        </View>
+                    </Modal>
+                </View>
+
                 <View style={{ alignItems: 'center', marginTop: 10 }}>
                     <Text style={{ fontSize: 30, fontWeight: 'bold' }}>
                         Location
@@ -95,8 +122,23 @@ export default class MapScreen extends Component {
                     onPress={this.pickLocationHandler}
                     ref={ref => this.map = ref}
                 >
+
                     {this.state.locationChosen ? this.state.markers.map((item) => {
-                        return <Marker onCalloutPress={alert('clicked on marker.')} coordinate={item.coordinate} />
+                        return <Marker
+                            onPress={this._toggleModal}
+                            coordinate={item.coordinate}
+                            description='this is marker description'
+                            // key = {item.coordinate}
+                            // icon={{ uri: uri }}
+                            title='Business_dail'
+                            identifier='identifier'
+                        // style = {{width:30 ,height:50}}
+                        >
+
+                        </Marker>
+
+
+
                     }) : null
                     }
                 </MapView>
